@@ -27,27 +27,20 @@ public class Main {
                     case 2 -> {
                         System.out.print("Enter an amount: ");
                         send_amount = scanner.nextDouble();
-                        if(send_amount > balance){
+                        if(balance > send_amount){
                             balance = balance - send_amount;
                             System.out.printf("Sent GHS%.02f\n" ,send_amount);
                         }
-                        else if(send_amount < balance){
+                        else if(balance < send_amount){
                             System.out.println("Insufficient funds\n");
                         }
                         else{
                             System.out.println("Invalid Option\n");
                         }
                     }
-                    case 3 -> {
-                        isRunning = false;
-                    }
-                    default -> {
-                        System.out.println("Invalid Option");
-                        break;
-                    }
+                    case 3 -> isRunning = false;
+                    default -> System.out.println("Invalid Option");
                 }
-
-
             }
         }
     }
