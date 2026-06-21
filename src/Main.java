@@ -10,7 +10,7 @@ public class Main {
         Map<String, Account> accounts = new HashMap<>();
         accounts.put("0241234567", new Account("1234", 150.00));
         //added second demo account
-        accounts.put("0501112222", new Account("4321", 150.00));
+        accounts.put("0501112222", new Account("4321", 75.50));
         System.out.print("Enter your phone number: ");
         String phoneNumber = scanner.nextLine();
         if (!accounts.containsKey(phoneNumber)) {
@@ -42,6 +42,9 @@ public class Main {
                         default -> System.out.println("Invalid Option");
                     }
                 }
+            }
+            else{
+                System.out.println("Incorrect PIN");
             }
         }
     }
