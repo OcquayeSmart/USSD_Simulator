@@ -1,5 +1,3 @@
-import java.util.InputMismatchException;
-
 public class SendMoneyScreen implements MenuScreen{
     @Override
     public void render(Account account) {
