@@ -12,6 +12,6 @@ public class PinLoginScreen implements MenuScreen{
         else{
             System.out.println("Invalid Pin");
         }
-        return null;
+        return new PinLoginScreen();
     }
 }

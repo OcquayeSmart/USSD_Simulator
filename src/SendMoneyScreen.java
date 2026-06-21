@@ -17,7 +17,7 @@ public class SendMoneyScreen implements MenuScreen{
             }
             else{
                 System.out.println("Insufficient funds");
-                return new MainMenuScreen();
+                return new SendMoneyScreen();
             }
         }
         catch(NumberFormatException e){
