@@ -1,4 +1,6 @@
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -24,22 +26,33 @@ public class Main {
                 while (isRunning) {
                     String output = "1. Check Balance\n2. Send Money\n3. Exit\n";
                     System.out.println(output);
-                    input = scanner.nextInt();
-                    switch (input) {
-                        case 1 -> System.out.printf("%.02f\n", accounts.get(phoneNumber).getBalance());
-                        case 2 -> {
-                            System.out.print("Enter an amount: ");
-                            double send_amount = scanner.nextDouble();
-                            if (accounts.get(phoneNumber).getBalance() >= send_amount) {
-                                double current_balance = accounts.get(phoneNumber).getBalance();
-                                accounts.get(phoneNumber).setBalance(current_balance - send_amount);
-                                System.out.printf("Sent GHS%.02f\n", send_amount);
-                            } else {
-                                System.out.println("Insufficient funds\n");
+                    try{
+                        input = scanner.nextInt();
+                        switch (input) {
+                            case 1 -> System.out.printf("GHS%.02f\n", accounts.get(phoneNumber).getBalance());
+                            case 2 -> {
+                                System.out.print("Enter an amount: ");
+                                double send_amount = scanner.nextDouble();
+                                if (accounts.get(phoneNumber).getBalance() >= send_amount) {
+                                    double current_balance = accounts.get(phoneNumber).getBalance();
+                                    accounts.get(phoneNumber).setBalance(current_balance - send_amount);
+                                    System.out.printf("Sent GHS%.02f\n", send_amount);
+                                } else {
+                                    System.out.println("Insufficient funds\n");
+                                }
                             }
+                            case 3 -> isRunning = false;
+                            default -> System.out.println("Invalid Option");
                         }
-                        case 3 -> isRunning = false;
-                        default -> System.out.println("Invalid Option");
+                    }
+                    catch(IllegalArgumentException e){
+                        System.out.println("Input out of range");
+                    }
+                    catch(InputMismatchException e){
+                        System.out.println("Invalid Input");
+                    }
+                    catch(Exception e){
+                        System.out.println("An error occurred");
                     }
                 }
             }
