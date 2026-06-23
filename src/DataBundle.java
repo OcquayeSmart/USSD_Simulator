@@ -8,7 +8,7 @@ public class DataBundle {
         this.bundlePrice = bundlePrice;
         this.bundleDuration = bundleDuration;
     }
-    public void describe(DataBundle bundle){
-        System.out.printf("%.02fGB @ %.02f - %s days", this.bundleSize, this.bundlePrice, this.bundleDuration);
+    public String describe(){
+        return "%.02fGB @ %.02f - %s days".formatted(this.bundleSize, this.bundlePrice, this.bundleDuration);
     }
 }
