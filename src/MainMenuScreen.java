@@ -6,7 +6,9 @@ public class MainMenuScreen implements MenuScreen{
 Map<String, Supplier<MenuScreen>> options = new HashMap<>(){{
     put("1", BalanceScreen::new);
     put("2", SendMoneyScreen::new);
-    put("3", () -> null);
+    put("3", AirtimeScreen::new);
+    put("4", DataBundleScreen::new);
+    put("5", () -> null);
 }};
     @Override
     public void render(Account account) {
