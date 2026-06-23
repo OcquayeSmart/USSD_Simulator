@@ -1,5 +1,13 @@
-public class MainMenuScreen implements MenuScreen{
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
+public class MainMenuScreen implements MenuScreen{
+Map<String, Supplier<MenuScreen>> options = new HashMap<>(){{
+    put("1", BalanceScreen::new);
+    put("2", SendMoneyScreen::new);
+    put("3", () -> null);
+}};
     @Override
     public void render(Account account) {
         System.out.println("1. Check Balance\n2. Send Money\n3. Exit\n");
@@ -7,18 +15,11 @@ public class MainMenuScreen implements MenuScreen{
 
     @Override
     public MenuScreen handleInput(String input, Account account) {
-        switch (input) {
-            case "1" -> {
-                return new BalanceScreen();
-            }
-            case "2" -> {
-                return new SendMoneyScreen();
-            }
-            case "3" -> {
-                return null;
-            }
-            default -> System.out.println("Invalid Option");
+        Supplier<MenuScreen> action = options.get(input);
+        if (action != null) {
+            return action.get();
         }
+        System.out.println("Invalid Option");
         return new MainMenuScreen();
     }
 }
