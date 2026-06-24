@@ -39,6 +39,9 @@ public class DataBundleScreen implements MenuScreen{
         catch(NumberFormatException e){
             System.out.println("Invalid Input");
         }
+        catch(IndexOutOfBoundsException e){
+            System.out.println("Input out of range");
+        }
         catch(Exception e){
             System.out.println("An error occurred");
         }
