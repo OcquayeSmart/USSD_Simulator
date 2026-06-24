@@ -17,7 +17,6 @@ public class LoanMenuScreen implements MenuScreen{
         //Use transaction time variable which increases after every transaction to simulate due date
         //there should be a maximum limit on how much a user is allowed to borrow
     }
-
     @Override
     public MenuScreen handleInput(String input, Account account) {
         try{

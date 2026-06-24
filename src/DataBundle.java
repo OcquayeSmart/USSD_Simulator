@@ -9,7 +9,7 @@ public class DataBundle {
         this.bundleDuration = bundleDuration;
     }
     public String describe(){
-        return "\t%-2.02fGB       \t@ %.02f - \t%s days".formatted(this.bundleSize, this.bundlePrice, this.bundleDuration);
+        return "\t%-9.02f  \t@ %-10.02f - \t%s days".formatted(this.bundleSize, this.bundlePrice, this.bundleDuration);
     }
 
     public double getBundleSize() {
