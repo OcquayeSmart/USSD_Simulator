@@ -10,7 +10,7 @@ public class PinLoginScreen implements MenuScreen{
             return new MainMenuScreen();
         }
         else{
-            System.out.println("Invalid Pin");
+            System.out.println("Invalid Pin\n");
         }
         return new PinLoginScreen();
     }

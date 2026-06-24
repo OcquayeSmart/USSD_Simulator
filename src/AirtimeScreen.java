@@ -2,7 +2,7 @@ public class AirtimeScreen implements MenuScreen{
 
     @Override
     public void render(Account account) {
-        System.out.print("How much airtime would you like to buy: ");
+        System.out.print("How much airtime would you like to buy: \n");
     }
 
     @Override

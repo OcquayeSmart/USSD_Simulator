@@ -2,6 +2,14 @@ public class Account {
     String phoneNumber;
     private final String PIN;
     private double balance;
+    private double loanBalance = 0;
+
+    public double getLoanBalance() {
+        return loanBalance;
+    }
+    public void setLoanBalance(double loanBalance) {
+        this.loanBalance = loanBalance;
+    }
     Account(String PIN, double balance){
         this.PIN = PIN;
         this.balance = balance;

@@ -8,11 +8,12 @@ Map<String, Supplier<MenuScreen>> options = new HashMap<>(){{
     put("2", SendMoneyScreen::new);
     put("3", AirtimeScreen::new);
     put("4", DataBundleScreen::new);
-    put("5", () -> null);
+    put("5", LoanMenuScreen::new);
+    put("6", () -> null);
 }};
     @Override
     public void render(Account account) {
-        System.out.println("1. Check Balance\n2. Send Money\n3.. Buy Airtime\n4. Data Bundles\n5. Exit\n");
+        System.out.println("1. Check Balance\n2. Send Money\n3. Buy Airtime\n4. Data Bundles\n5. Loans\n6. Exit\n");
     }
 
     @Override
