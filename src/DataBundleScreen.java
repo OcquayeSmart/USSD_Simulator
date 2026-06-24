@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBundleScreen implements MenuScreen{
-    int counter = 1;
     List<DataBundle> bundles = new ArrayList<>(){{
        add(new DataBundle(2.45, 20, 30));
        add(new DataBundle(6.13, 50, 30));
@@ -13,6 +12,7 @@ public class DataBundleScreen implements MenuScreen{
     }};
     @Override
     public void render(Account account) {
+        int counter = 1;
         for(DataBundle bundle : bundles){
             System.out.println(counter + ". " + bundle.describe());
             counter++;
