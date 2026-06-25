@@ -1,7 +1,7 @@
 public class SendMoneyScreen implements MenuScreen{
     @Override
     public void render(Account account) {
-        System.out.print("Enter an amount(GHS): ");
+        System.out.print("Enter an amount(GHS): \n");
     }
 
     @Override
@@ -11,9 +11,9 @@ public class SendMoneyScreen implements MenuScreen{
             if(amountSent <= account.getBalance()){
                 double current_balance = account.getBalance();
                 account.setBalance(current_balance - amountSent);
-                System.out.printf("You have sent GHS%.02f\n", amountSent);
-            }
-            else{
+                System.out.printf("You have sent GHS%.02f", amountSent);
+                System.out.println();
+            } else{
                 System.out.println("Insufficient funds");
                 return new SendMoneyScreen();
             }

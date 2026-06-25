@@ -1,7 +1,7 @@
 public class DataBundle {
-    double bundleSize;
-    double bundlePrice;
-    int bundleDuration;
+    private double bundleSize;
+    private double bundlePrice;
+    private int bundleDuration;
 
     public DataBundle(double bundleSize, double bundlePrice, int bundleDuration) {
         this.bundleSize = bundleSize;
@@ -9,7 +9,7 @@ public class DataBundle {
         this.bundleDuration = bundleDuration;
     }
     public String describe(){
-        return "\t%-9.02f  \t@ %-10.02f - \t%s days".formatted(this.bundleSize, this.bundlePrice, this.bundleDuration);
+        return "\tGHS%-7.02f\t@ %-7.02f -\t%s days".formatted(this.bundleSize, this.bundlePrice, this.bundleDuration);
     }
 
     public double getBundleSize() {

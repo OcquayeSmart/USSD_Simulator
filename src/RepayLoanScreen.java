@@ -4,7 +4,8 @@ public class RepayLoanScreen implements MenuScreen{
 
     @Override
     public void render(Account account) {
-        System.out.print("Enter amount to repay: \n");
+        System.out.print("Enter amount to repay(GHS): ");
+        System.out.println();
     }
 
     @Override

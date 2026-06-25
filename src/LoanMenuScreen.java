@@ -7,6 +7,7 @@ public class LoanMenuScreen implements MenuScreen{
         put("1", RequestLoanScreen::new);
         put("2", LoanBalanceScreen::new);
         put("3", RepayLoanScreen::new);
+        put("4", MainMenuScreen::new);
     }};
     @Override
     public void render(Account account) {

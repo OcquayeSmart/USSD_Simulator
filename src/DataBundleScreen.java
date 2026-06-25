@@ -17,7 +17,8 @@ public class DataBundleScreen implements MenuScreen{
             System.out.println(counter + ". " + bundle.describe());
             counter++;
         }
-        System.out.print("\nEnter your preferred choice: ");
+        System.out.print("\nChoose your preferred bundle(or 0 to go back): ");
+        System.out.println();
     }
 
     @Override
@@ -26,13 +27,15 @@ public class DataBundleScreen implements MenuScreen{
             int bundleInput = Integer.parseInt(input);
             int index = bundleInput - 1;
             DataBundle selectedBundle = bundles.get(index);
-            if(selectedBundle.bundlePrice < account.getBalance()){
+            if(selectedBundle.getBundlePrice() < account.getBalance()){
                 double user_balance = account.getBalance();
                 account.setBalance(user_balance - selectedBundle.getBundlePrice());
                 System.out.println("----------------CONGRATULATIONS------------------");
                 System.out.printf("You have purchased %.2fGB at GHS%.2f for %d days\n", selectedBundle.getBundleSize(), selectedBundle.getBundlePrice(), selectedBundle.getBundleDuration());
-            }
-            else{
+                System.out.println();
+            } else if (bundleInput == 0) {
+                return new MainMenuScreen();
+            } else {
                 System.out.println("Insufficient funds");
             }
         }
