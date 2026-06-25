@@ -25,18 +25,21 @@ public class DataBundleScreen implements MenuScreen{
     public MenuScreen handleInput(String input, Account account) {
         try{
             int bundleInput = Integer.parseInt(input);
+
+            if (bundleInput == 0) {
+                return new MainMenuScreen();
+            }
             int index = bundleInput - 1;
             DataBundle selectedBundle = bundles.get(index);
-            if(selectedBundle.getBundlePrice() < account.getBalance()){
+            if(selectedBundle.getBundlePrice() <= account.getBalance()){
                 double user_balance = account.getBalance();
                 account.setBalance(user_balance - selectedBundle.getBundlePrice());
                 System.out.println("----------------CONGRATULATIONS------------------");
                 System.out.printf("You have purchased %.2fGB at GHS%.2f for %d days\n", selectedBundle.getBundleSize(), selectedBundle.getBundlePrice(), selectedBundle.getBundleDuration());
                 System.out.println();
-            } else if (bundleInput == 0) {
-                return new MainMenuScreen();
             } else {
                 System.out.println("Insufficient funds");
+                return new DataBundleScreen();
             }
         }
         catch(NumberFormatException e){
