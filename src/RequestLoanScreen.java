@@ -4,7 +4,7 @@ public class RequestLoanScreen implements MenuScreen{
 
     @Override
     public void render(Account account) {
-        System.out.print("How much would you like to borrow: \n");
+        System.out.print("How much would you like to borrow: ");
     }
 
     @Override
@@ -16,6 +16,7 @@ public class RequestLoanScreen implements MenuScreen{
             account.setLoanBalance(account.getLoanBalance() + borrow_amount);
             System.out.printf("Congratulations! You have borrowed GHS%.02f.\n", borrow_amount);
             System.out.printf("Current balance: GHS%.02f\n", account.getBalance());
+            System.out.println();
         }
         catch(NumberFormatException e){
             System.out.println("Invalid Input");

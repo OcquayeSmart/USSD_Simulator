@@ -1,7 +1,7 @@
 public class BalanceScreen implements MenuScreen{
     @Override
     public void render(Account account) {
-        System.out.printf("GHS%.02f\n", account.getBalance());
+        System.out.printf("You have GHS%.02f in your account\n", account.getBalance());
     }
 
     @Override

@@ -12,7 +12,7 @@ public class SendMoneyScreen implements MenuScreen{
                 double current_balance = account.getBalance();
                 account.setBalance(current_balance - amountSent);
                 System.out.printf("You have sent GHS%.02f", amountSent);
-                System.out.println();
+
             } else{
                 System.out.println("Insufficient funds");
                 return new SendMoneyScreen();

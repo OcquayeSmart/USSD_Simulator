@@ -1,12 +1,14 @@
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        PersistenceService ps = new PersistenceService();
         Scanner scanner = new Scanner(System.in);
-        Map<String, Account> accounts = new HashMap<>();
-        accounts.put("0241234567", new Account("1234", 150.00));
-        accounts.put("0501112222", new Account("4321", 75.50));
+        Map<String, Account> accounts = ps.load();
+        if(accounts.isEmpty()){
+            accounts.put("0241234567", new Account("1234", 150.00));
+            accounts.put("0501112222", new Account("4321", 75.50));
+        }
         System.out.print("Enter your phone number: ");
         String phoneNumber = scanner.nextLine();
         Account account = accounts.get(phoneNumber);
@@ -20,6 +22,7 @@ public class Main {
                 String input = scanner.nextLine();
                 currentScreen = currentScreen.handleInput(input, account);
             }
+            ps.save(accounts);
         }
    }
 }
