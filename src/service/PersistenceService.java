@@ -1,3 +1,7 @@
+package service;
+
+import model.Account;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,7 +13,7 @@ import java.util.Map;
 public class PersistenceService {
     Map<String, Account> accounts = new HashMap<>();
     Path path = Path.of("customer_profile.csv");
-    void save(Map<String, Account> account) {
+    public void save(Map<String, Account> account) {
         try(BufferedWriter bf = Files.newBufferedWriter(path)){
             for(Map.Entry<String, Account> entry: account.entrySet()){
                 //we take both the key and the value(account)
@@ -30,7 +34,7 @@ public class PersistenceService {
             System.out.println("An error occurred");
         }
     }
-    Map<String, Account> load(){
+    public Map<String, Account> load(){
 //        System.out.println("File exists: " + Files.exists(path));
 //        System.out.println("Absolute path: " + path.toAbsolutePath());
         if(!Files.exists(path)){

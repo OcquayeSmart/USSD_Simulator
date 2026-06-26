@@ -1,4 +1,9 @@
-public class SendMoneyScreen implements MenuScreen{
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
+public class SendMoneyScreen implements MenuScreen {
     @Override
     public void render(Account account) {
         System.out.print("Enter an amount(GHS): \n");

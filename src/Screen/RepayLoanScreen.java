@@ -1,6 +1,11 @@
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
 import java.util.InputMismatchException;
 
-public class RepayLoanScreen implements MenuScreen{
+public class RepayLoanScreen implements MenuScreen {
 
     @Override
     public void render(Account account) {

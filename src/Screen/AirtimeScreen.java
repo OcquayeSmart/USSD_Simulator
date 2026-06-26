@@ -1,4 +1,9 @@
-public class AirtimeScreen implements MenuScreen{
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
+public class AirtimeScreen implements MenuScreen {
 
     @Override
     public void render(Account account) {

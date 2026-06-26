@@ -1,7 +1,13 @@
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+import model.DataBundle;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBundleScreen implements MenuScreen{
+public class DataBundleScreen implements MenuScreen {
     List<DataBundle> bundles = new ArrayList<>(){{
        add(new DataBundle(2.45, 20, 30));
        add(new DataBundle(6.13, 50, 30));

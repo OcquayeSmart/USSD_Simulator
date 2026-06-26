@@ -1,3 +1,5 @@
+package model;
+
 public class Account {
     String phoneNumber;
     private final String PIN;
@@ -10,7 +12,7 @@ public class Account {
     public void setLoanBalance(double loanBalance) {
         this.loanBalance = loanBalance;
     }
-    Account(String PIN, double balance){
+    public Account(String PIN, double balance){
         this.PIN = PIN;
         this.balance = balance;
     }

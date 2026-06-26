@@ -1,4 +1,9 @@
-public class PinLoginScreen implements MenuScreen{
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
+public class PinLoginScreen implements MenuScreen {
     private int attempts = 0;
     @Override
     public void render(Account account) {

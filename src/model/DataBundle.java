@@ -1,3 +1,5 @@
+package model;
+
 public class DataBundle {
     private double bundleSize;
     private double bundlePrice;

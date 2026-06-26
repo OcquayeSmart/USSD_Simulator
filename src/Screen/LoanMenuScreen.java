@@ -1,8 +1,13 @@
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class LoanMenuScreen implements MenuScreen{
+public class LoanMenuScreen implements MenuScreen {
     Map<String, Supplier<MenuScreen>> loanOptions = new HashMap<>(){{
         put("1", RequestLoanScreen::new);
         put("2", LoanBalanceScreen::new);

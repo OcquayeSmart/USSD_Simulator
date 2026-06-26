@@ -1,4 +1,9 @@
-public class LoanBalanceScreen implements MenuScreen{
+package Screen;
+
+import core.MenuScreen;
+import model.Account;
+
+public class LoanBalanceScreen implements MenuScreen {
 
     @Override
     public void render(Account account) {
