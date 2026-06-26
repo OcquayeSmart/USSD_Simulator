@@ -6,6 +6,6 @@ public class BalanceScreen implements MenuScreen{
 
     @Override
     public MenuScreen handleInput(String input, Account account) {
-        return new MainMenuScreen();
+        return new MainMenuScreen().handleInput(input, account);
     }
 }
