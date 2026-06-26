@@ -31,6 +31,8 @@ public class PersistenceService {
         }
     }
     Map<String, Account> load(){
+//        System.out.println("File exists: " + Files.exists(path));
+//        System.out.println("Absolute path: " + path.toAbsolutePath());
         if(!Files.exists(path)){
             return new HashMap<>();
         }
@@ -38,10 +40,10 @@ public class PersistenceService {
             String line;
             while((line = br.readLine()) != null){
                 String[] parts = line.split(",");
-                String phoneNumber = parts[0];
-                String pin = parts[1];
-                double balance = Double.parseDouble(parts[2]);
-                double loanBalance = Double.parseDouble(parts[3]);
+                String phoneNumber = parts[0].trim();
+                String pin = parts[1].trim();
+                double balance = Double.parseDouble(parts[2].trim());
+                double loanBalance = Double.parseDouble(parts[3].trim());
                 Account account = new Account(pin, balance);
                 account.setLoanBalance(loanBalance);
                 accounts.put(phoneNumber, account);

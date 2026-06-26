@@ -5,6 +5,7 @@ public class Main {
         PersistenceService ps = new PersistenceService();
         Scanner scanner = new Scanner(System.in);
         Map<String, Account> accounts = ps.load();
+//        System.out.println("Loaded accounts: " + accounts.keySet());
         if(accounts.isEmpty()){
             accounts.put("0241234567", new Account("1234", 150.00));
             accounts.put("0501112222", new Account("4321", 75.50));
