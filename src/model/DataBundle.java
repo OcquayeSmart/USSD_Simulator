@@ -5,9 +5,9 @@ public class DataBundle {
     private double bundlePrice;
     private int bundleDuration;
 
-    public DataBundle(double bundleSize, double bundlePrice, int bundleDuration) {
-        this.bundleSize = bundleSize;
+    public DataBundle(double bundlePrice, double bundleSize, int bundleDuration) {
         this.bundlePrice = bundlePrice;
+        this.bundleSize = bundleSize;
         this.bundleDuration = bundleDuration;
     }
     public String describe(){
