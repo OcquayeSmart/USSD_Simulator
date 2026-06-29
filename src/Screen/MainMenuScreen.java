@@ -18,7 +18,7 @@ Map<String, Supplier<MenuScreen>> options = new HashMap<>(){{
 }};
     @Override
     public void render(Account account) {
-        System.out.println("1. Check Balance\n2. Send Money\n3. Buy Airtime\n4. Data Bundles\n5. Loans\n6. Exit\n");
+        System.out.print("1. Check Balance\n2. Send Money\n3. Buy Airtime\n4. Data Bundles\n5. Loans\n6. Exit\n\nEnter a value(1-6): ");
     }
 
     @Override

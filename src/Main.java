@@ -25,7 +25,7 @@ public class Main {
             MenuScreen currentScreen = new PinLoginScreen();
             while(currentScreen != null){
                 currentScreen.render(account);
-                String input = scanner.nextLine();
+                String input = scanner.nextLine().trim();
                 currentScreen = currentScreen.handleInput(input, account);
             }
             ps.save(accounts);

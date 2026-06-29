@@ -7,7 +7,7 @@ public class AirtimeScreen implements MenuScreen {
 
     @Override
     public void render(Account account) {
-        System.out.print("How much airtime would you like to buy: \n");
+        System.out.print("How much airtime would you like to buy: ");
     }
 
     @Override
@@ -17,7 +17,7 @@ public class AirtimeScreen implements MenuScreen {
             double user_balance = account.getBalance();
             if(amount <= account.getBalance()){
                 account.setBalance(user_balance - amount);
-                System.out.printf("Congratulations! You have received GHS%.02f of airtime", amount);
+                System.out.printf("Congratulations! You have received GHS%.02f of airtime\n", amount);
             }
             else{
                 System.out.println("Insufficient funds");

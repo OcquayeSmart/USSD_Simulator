@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class PersistenceService {
     Map<String, Account> accounts = new HashMap<>();
-    Path path = Path.of("customer_profile.csv");
+    Path path = Path.of(System.getProperty("user.dir"), "customer_profile.csv");
     public void save(Map<String, Account> account) {
         try(BufferedWriter bf = Files.newBufferedWriter(path)){
             for(Map.Entry<String, Account> entry: account.entrySet()){
@@ -35,8 +35,6 @@ public class PersistenceService {
         }
     }
     public Map<String, Account> load(){
-//        System.out.println("File exists: " + Files.exists(path));
-//        System.out.println("Absolute path: " + path.toAbsolutePath());
         if(!Files.exists(path)){
             return new HashMap<>();
         }
