@@ -10,6 +10,10 @@ public class Main {
         PersistenceService ps = new PersistenceService();
         Scanner scanner = new Scanner(System.in);
         Map<String, Account> accounts = ps.load();
+        //setting the phone number to match each key
+        //since I did not create a constructor to pass in the phone number, the account objects do not know they have a phonenumber
+        //they only recognize the fields
+        accounts.forEach((phone, acc) -> acc.setPhoneNumber(phone));
 //        System.out.println("Loaded accounts: " + accounts.keySet());
         if(accounts.isEmpty()){
             accounts.put("0241234567", new Account("1234", 150.00));
