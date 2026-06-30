@@ -9,7 +9,6 @@ public class SendMoneyScreen implements MenuScreen {
     private final Map<String, Account> accounts;
     private Step step = Step.RECIPIENT;
     private String recipientNumber;
-
     public SendMoneyScreen(Map<String, Account> accounts) {
         this.accounts = accounts;
     }
@@ -29,7 +28,13 @@ public class SendMoneyScreen implements MenuScreen {
     public MenuScreen handleInput(String input, Account account) {
         if(step == Step.RECIPIENT){
             recipientNumber = input;
-            if(accounts.containsKey(recipientNumber)){
+            if(input.equals(account.getPhoneNumber())){
+                System.out.println("----------------------------");
+                System.out.println("You cannot send to yourself!");
+                System.out.println();
+                return new MainMenuScreen(accounts);
+            }
+            else if(accounts.containsKey(recipientNumber)){
                 System.out.println("Send to: " + accounts.get(recipientNumber));
                 step = Step.AMOUNT;
             }
@@ -41,13 +46,15 @@ public class SendMoneyScreen implements MenuScreen {
         }
         else if(step == Step.AMOUNT){
             try{
+                Account receiver = accounts.get(recipientNumber);
                 double amountSent = Double.parseDouble(input);
                 if(amountSent <= account.getBalance()){
                     double current_balance = account.getBalance();
                     account.setBalance(current_balance - amountSent);
-                    System.out.printf("\nSent GHS%.02f to %s", amountSent, accounts.get(recipientNumber));
-                    account.setBalance(account.getBalance() + amountSent);
-                } else{
+                    System.out.printf("\nSent GHS%.02f to %s", amountSent, recipientNumber);
+                    receiver.setBalance(receiver.getBalance() + amountSent);
+                }
+                else{
                     System.out.println("Insufficient funds");
                     return new SendMoneyScreen(accounts);
                 }
