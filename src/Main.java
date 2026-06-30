@@ -22,7 +22,7 @@ public class Main {
             System.out.println("Number not registered");
         }
         else{
-            MenuScreen currentScreen = new PinLoginScreen();
+            MenuScreen currentScreen = new PinLoginScreen(accounts);
             while(currentScreen != null){
                 currentScreen.render(account);
                 String input = scanner.nextLine().trim();

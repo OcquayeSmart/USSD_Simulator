@@ -6,16 +6,21 @@ import model.DataBundle;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DataBundleScreen implements MenuScreen {
-    List<DataBundle> bundles = new ArrayList<>(){{
-       add(new DataBundle(2.45, 20, 30));
-       add(new DataBundle(6.13, 50, 30));
-       add(new DataBundle(12.81, 80, 30));
-       add(new DataBundle(39.00, 200, 30));
-       add(new DataBundle(111.43, 300, 30));
-       add(new DataBundle(263.38, 400, 30));
-    }};
+    private final Map<String, Account> accounts;
+    List<DataBundle> bundles = new ArrayList<>();
+    public DataBundleScreen(Map<String, Account> accounts) {
+        this.accounts = accounts;
+        bundles.add(new DataBundle(2.45, 20, 30));
+        bundles.add(new DataBundle(6.13, 50, 30));
+        bundles.add(new DataBundle(12.81, 80, 30));
+        bundles.add(new DataBundle(39.00, 200, 30));
+        bundles.add(new DataBundle(111.43, 300, 30));
+        bundles.add(new DataBundle(263.38, 400, 30));
+    }
+
     @Override
     public void render(Account account) {
         int counter = 1;
@@ -33,7 +38,7 @@ public class DataBundleScreen implements MenuScreen {
             int bundleInput = Integer.parseInt(input);
 
             if (bundleInput == 0) {
-                return new MainMenuScreen();
+                return new MainMenuScreen(accounts);
             }
             int index = bundleInput - 1;
             DataBundle selectedBundle = bundles.get(index);
@@ -45,7 +50,7 @@ public class DataBundleScreen implements MenuScreen {
                 System.out.println();
             } else {
                 System.out.println("Insufficient funds");
-                return new DataBundleScreen();
+                return new DataBundleScreen(accounts);
             }
         }
         catch(NumberFormatException e){
@@ -57,6 +62,6 @@ public class DataBundleScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new MainMenuScreen();
+        return new MainMenuScreen(accounts);
     }
 }

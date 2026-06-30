@@ -3,7 +3,13 @@ package Screen;
 import core.MenuScreen;
 import model.Account;
 
+import java.util.Map;
+
 public class AirtimeScreen implements MenuScreen {
+    private final Map<String,Account> accounts;
+    public AirtimeScreen(Map<String, Account> accounts) {
+        this.accounts = accounts;
+    }
 
     @Override
     public void render(Account account) {
@@ -21,7 +27,7 @@ public class AirtimeScreen implements MenuScreen {
             }
             else{
                 System.out.println("Insufficient funds");
-                return new AirtimeScreen();
+                return new AirtimeScreen(accounts);
             }
         }
         catch(NumberFormatException e){
@@ -30,6 +36,6 @@ public class AirtimeScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new MainMenuScreen();
+        return new MainMenuScreen(accounts);
     }
 }

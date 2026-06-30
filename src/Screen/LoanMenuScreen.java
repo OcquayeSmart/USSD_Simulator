@@ -8,12 +8,17 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class LoanMenuScreen implements MenuScreen {
-    Map<String, Supplier<MenuScreen>> loanOptions = new HashMap<>(){{
-        put("1", RequestLoanScreen::new);
-        put("2", LoanBalanceScreen::new);
-        put("3", RepayLoanScreen::new);
-        put("4", MainMenuScreen::new);
-    }};
+    private final Map<String,Account> accounts;
+    Map<String, Supplier<MenuScreen>> loanOptions = new HashMap<>();
+
+    public LoanMenuScreen(Map<String, Account> accounts) {
+        this.accounts = accounts;
+        loanOptions.put("1", RequestLoanScreen::new);
+        loanOptions.put("2", LoanBalanceScreen::new);
+        loanOptions.put("3", RepayLoanScreen::new);
+        loanOptions.put("4", () -> new MainMenuScreen(accounts));
+    }
+
     @Override
     public void render(Account account) {
         System.out.println("1. Request loan\n2. Check loan balance\n3. Repay loan\n4. Back");
@@ -38,7 +43,7 @@ public class LoanMenuScreen implements MenuScreen {
                     return loanOptions.get("3").get();
                 }
                 case 4 -> {
-                    return new MainMenuScreen();
+                    return new MainMenuScreen(accounts);
                 }
             }
         }
@@ -48,6 +53,6 @@ public class LoanMenuScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new LoanMenuScreen();
+        return new LoanMenuScreen(accounts);
     }
 }
