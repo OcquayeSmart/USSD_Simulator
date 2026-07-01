@@ -40,6 +40,7 @@ public class PersistenceService {
         }
         try(BufferedReader br = Files.newBufferedReader(path)){
             String line;
+            br.readLine();//skipping the header files
             while((line = br.readLine()) != null){
                 String[] parts = line.split(",");
                 String phoneNumber = parts[0].trim();
