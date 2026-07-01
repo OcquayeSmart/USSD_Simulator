@@ -2,7 +2,6 @@ import core.MenuScreen;
 import model.Account;
 import service.PersistenceService;
 import Screen.PinLoginScreen;
-
 import java.util.Map;
 import java.util.Scanner;
 public class Main {
@@ -11,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Map<String, Account> accounts = ps.load();
         //setting the phone number to match each key
-        //since I did not create a constructor to pass in the phone number, the account objects do not know they have a phonenumber
+        //since I did not create a constructor to pass in the phone number, the account objects do not know they have a phone number
         //they only recognize the fields
         accounts.forEach((phone, acc) -> acc.setPhoneNumber(phone));
 //        System.out.println("Loaded accounts: " + accounts.keySet());
@@ -23,7 +22,7 @@ public class Main {
         String phoneNumber = scanner.nextLine();
         Account account = accounts.get(phoneNumber);
         if (!accounts.containsKey(phoneNumber)) {
-            System.out.println("Number not registered");
+            System.out.println("SORRY, Number not registered");
         }
         else{
             MenuScreen currentScreen = new PinLoginScreen(accounts);
