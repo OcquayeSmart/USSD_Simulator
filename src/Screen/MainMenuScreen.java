@@ -11,6 +11,7 @@ public class MainMenuScreen implements MenuScreen {
     private final Map<String, Supplier<MenuScreen>> options = new HashMap<>();
     public MainMenuScreen(Map<String, Account> accounts) {
         this.accounts = accounts;
+        options.put("0", () -> new MainMenuScreen(accounts));
         options.put("1", () -> new BalanceScreen(accounts));
         options.put("2", () -> new SendMoneyScreen(accounts));
         options.put("3", () -> new AirtimeScreen(accounts));
