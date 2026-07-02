@@ -6,7 +6,7 @@ import model.Account;
 import java.util.Map;
 
 public class SendMoneyScreen implements MenuScreen {
-    private final Map<String, Account> accounts;
+    private Map<String, Account> accounts;
     private Step step = Step.RECIPIENT;
     private String recipientNumber;
     public SendMoneyScreen(Map<String, Account> accounts) {
@@ -16,11 +16,9 @@ public class SendMoneyScreen implements MenuScreen {
     public void render(Account account) {
         if(step == Step.RECIPIENT){
             System.out.print("\nEnter recipient's phone number: ");
-            System.out.println();
         }
         else{
-            System.out.print("\nEnter an amount(GHS): ");
-            System.out.println();
+            System.out.print("Enter an amount(GHS): ");
         }
     }
 
@@ -31,15 +29,17 @@ public class SendMoneyScreen implements MenuScreen {
             if(input.equals(account.getPhoneNumber())){
                 System.out.println("----------------------------");
                 System.out.println("You cannot send to yourself!");
+                System.out.println("----------------------------");
                 System.out.println();
                 return new MainMenuScreen(accounts);
             }
             else if(accounts.containsKey(recipientNumber)){
-                System.out.println("Send to: " + accounts.get(recipientNumber));
+                System.out.println("\nSend to: " + "+233" + recipientNumber);
                 step = Step.AMOUNT;
+                return this;
             }
             else{
-                System.out.println("Account (" + accounts.get(recipientNumber) + ")" + " not found");
+                System.out.println("\nAccount (" + accounts.get(recipientNumber) + ")" + " not found");
                 System.out.println("Transaction Failed");
                 return new MainMenuScreen(accounts);
             }
@@ -51,7 +51,8 @@ public class SendMoneyScreen implements MenuScreen {
                 if(amountSent <= account.getBalance()){
                     double current_balance = account.getBalance();
                     account.setBalance(current_balance - amountSent);
-                    System.out.printf("\nSent GHS%.02f to %s", amountSent, recipientNumber);
+                    System.out.printf("\nSent GHS%.02f to %s\n", amountSent, recipientNumber);
+                    System.out.println();
                     receiver.setBalance(receiver.getBalance() + amountSent);
                 }
                 else{
