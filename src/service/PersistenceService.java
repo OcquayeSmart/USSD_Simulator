@@ -23,6 +23,7 @@ public class PersistenceService {
                 double balance = acc.getBalance();
                 double loanBalance = acc.getLoanBalance();
                 String combinedString = phoneNumber + "," + pin + "," + balance + "," + loanBalance;
+                bf.write("phone,pin,balance,loan");
                 bf.write(combinedString);
                 bf.newLine();
             }

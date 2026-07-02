@@ -23,14 +23,14 @@ public class PinLoginScreen implements MenuScreen {
             return new MainMenuScreen(accounts);
         }
         else{
-            System.out.println("Invalid Pin");
+            System.out.println("\nYou entered the wrong PIN. Please try again.");
             attempts ++;
         }
         if(attempts >= 3){
-            System.out.println("Too many attempts, Bye");
+            System.out.println("Too many attempts, Bye\n");
             return null;
         }
-        System.out.println((3-attempts) + " attempts remaining");
+        System.out.println((3-attempts) + " attempts remaining\n");
         return this;//returns the exact object instead of a new one to keep track of the counter
     }
 }
