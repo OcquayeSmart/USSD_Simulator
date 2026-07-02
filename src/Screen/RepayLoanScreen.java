@@ -4,8 +4,14 @@ import core.MenuScreen;
 import model.Account;
 
 import java.util.InputMismatchException;
+import java.util.Map;
 
 public class RepayLoanScreen implements MenuScreen {
+    private Map<String, Account> accounts;
+
+    public RepayLoanScreen(Map<String, Account> accounts) {
+        this.accounts = accounts;
+    }
 
     @Override
     public void render(Account account) {
@@ -26,7 +32,7 @@ public class RepayLoanScreen implements MenuScreen {
             }
             else{
                 System.out.println("Insufficient funds");
-                return new MainMenuScreen();
+                return new MainMenuScreen(accounts);
             }
         }
         catch(NumberFormatException e){
@@ -38,6 +44,6 @@ public class RepayLoanScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new MainMenuScreen();
+        return new MainMenuScreen(accounts);
     }
 }

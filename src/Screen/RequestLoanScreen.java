@@ -4,12 +4,18 @@ import core.MenuScreen;
 import model.Account;
 
 import java.util.InputMismatchException;
+import java.util.Map;
 
 public class RequestLoanScreen implements MenuScreen {
+    private Map<String, Account> accounts;
+
+    public RequestLoanScreen(Map<String, Account> accounts) {
+        this.accounts = accounts;
+    }
 
     @Override
     public void render(Account account) {
-        System.out.print("How much would you like to borrow: ");
+        System.out.print("Enter amount to borrow: ");
     }
 
     @Override
@@ -19,9 +25,8 @@ public class RequestLoanScreen implements MenuScreen {
             double user_balance = account.getBalance();
             account.setBalance(user_balance + borrow_amount);
             account.setLoanBalance(account.getLoanBalance() + borrow_amount);
-            System.out.printf("Congratulations! You have borrowed GHS%.02f.\n", borrow_amount);
+            System.out.printf("\nCongratulations! You have borrowed GHS%.02f\n", borrow_amount);
             System.out.printf("Current balance: GHS%.02f\n", account.getBalance());
-            System.out.println();
         }
         catch(NumberFormatException e){
             System.out.println("Invalid Input");
@@ -32,6 +37,6 @@ public class RequestLoanScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new MainMenuScreen();
+        return new LoanMenuScreen(accounts);
     }
 }

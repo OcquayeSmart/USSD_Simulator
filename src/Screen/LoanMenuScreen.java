@@ -13,17 +13,16 @@ public class LoanMenuScreen implements MenuScreen {
 
     public LoanMenuScreen(Map<String, Account> accounts) {
         this.accounts = accounts;
-        loanOptions.put("1", RequestLoanScreen::new);
-        loanOptions.put("2", LoanBalanceScreen::new);
-        loanOptions.put("3", RepayLoanScreen::new);
+        loanOptions.put("1", () -> new RequestLoanScreen(accounts));
+        loanOptions.put("2", () -> new LoanBalanceScreen(accounts));
+        loanOptions.put("3", () -> new RepayLoanScreen(accounts));
         loanOptions.put("4", () -> new MainMenuScreen(accounts));
     }
 
     @Override
     public void render(Account account) {
-        System.out.println("1. Request loan\n2. Check loan balance\n3. Repay loan\n4. Back");
-        //Pay back loan
-        //Generate loanedAmount variable to keep track of loaned amount
+        System.out.print("\n1. Request loan\n2. Check loan balance\n3. Repay loan\n4. Back\n\nEnter a value(1-4): ");
+        //Pay-back loan
         //SendMoney should automatically subtract the loaned amount after due date
         //Use transaction time variable which increases after every transaction to simulate due date
         //there should be a maximum limit on how much a user is allowed to borrow
@@ -53,6 +52,6 @@ public class LoanMenuScreen implements MenuScreen {
         catch(Exception e){
             System.out.println("An error occurred");
         }
-        return new LoanMenuScreen(accounts);
+        return new LoanMenuScreen(accounts).handleInput(input,account);
     }
 }
